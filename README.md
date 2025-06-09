@@ -42,7 +42,8 @@ Automate eBay listing creation from folders of product images—with AI-powered 
 ```sh
 git clone https://github.com/yourusername/ebay-auto-listing-assistant.git
 cd ebay-auto-listing-assistant
-cp .env_example .env    # edit .env per your setup & API keys
+cp .env_example .env    # edit .env per your setup to define path, API keys, and confirm the models to use. gpt-4o and gpt-4.1 have been tested for all calls.
+chmod +x ./ebay_auto.sh
 ```
 Edit .env with your OpenAI API key, models, and the actual path to your product folders.
 ### 2. Organize your product folders
@@ -65,25 +66,24 @@ Default (quiet)
 This issues two calls to openai per product, to first gather product info in a structured way and another to generate a brief description based on condition indicated in folder name/title:
 
 ```sh
-./ebay_auto2.sh
+./ebay_auto.sh
 ```
 Verbose mode:
 
 ```sh
-./ebay_auto2.sh -v
+./ebay_auto.sh -v
 ```
 
 With additional multimodal prompt to update item description with condition from images (text+images):
 
 ```sh
-./ebay_auto2.sh -i
+./ebay_auto.sh -i
 ```
 With both verbose and multimodal:
 
-sh
-
-./ebay_auto2.sh -v -i
-
+```sh
+./ebay_auto.sh -v -i
+```
 Or set MULTIMODAL_ALWAYS=1 in .env to apply image+text flow to every product by default.
 Outputs
 
@@ -109,7 +109,7 @@ CSV fields will contain all description text, sanitized for newlines/quotes.
 
 License
 
-This project is licensed under the terms of the GNU General Public License v3.0 (GPL-3.0).
+This project is licensed under the terms of the GNU Affero General Public License v3.0 (AGPL-3.0).
 
 See LICENSE for complete terms.
 Contributing
