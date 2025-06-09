@@ -1,0 +1,1 @@
+Generate eBay listing descriptions and compress images in batch from named folders of images, using simple calls to openai from bash
